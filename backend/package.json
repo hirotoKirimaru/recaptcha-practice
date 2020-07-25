@@ -1,0 +1,20 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "backend.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "functions-framework --target=main",
+    "watch": "npm-watch start"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@google-cloud/functions-framework": "^1.6.0",
+    "npm-watch": "^0.6.0"
+  },
+  "watch": {
+    "start": "*.js"
+  }
+}
