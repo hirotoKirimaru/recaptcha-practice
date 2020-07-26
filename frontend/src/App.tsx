@@ -7,22 +7,21 @@ import {
 } from "react-google-recaptcha-v3";
 
 export default function App() {
-  const [token, setToken] = useState(0);
-
-  function setToken2(token: any) {
-    console.log(token);
-    setToken(token);
-  }
+  const [token, setToken] = useState();
+  const [score, setScore] = useState();
+  const [challengeTime, setChallengeTime] = useState();
 
   function serverAuth() {
     console.log(token);
     axios
       .get(
-        "https://us-east1-slack-app-for-mizukami.cloudfunctions.net/googleRecaptchav3"
+        "https://us-east1-slack-app-for-mizukami.cloudfunctions.net/googleRecaptchav3?token=" + token
       )
       .then(res => {
-        console.log("ほげ");
         console.log("res");
+        console.log(res);
+        setChallengeTime(res.data.challenge_ts);
+        setScore(res.data.score);
       })
       .catch(e => {
         console.log(e);
@@ -32,12 +31,14 @@ export default function App() {
   return (
     <div className="App">
       <GoogleReCaptchaProvider reCaptchaKey="6LcZ57QZAAAAAB5Zin3LaS1P7oyap4Vx7FxWeC6_">
-        <h1>Hello CodeSandbox</h1>
-        <h2>Start editing to see some magic happen!</h2>
+        <h1>Google reCaptcha V3</h1>
+        <h2>練習用ソース</h2>
         <input type="button" value="認証ボタン" onClick={serverAuth} />
-        <br />
-        token：{token}
-        <GoogleReCaptcha onVerify={token => setToken2(token)} />
+        <h3>token：{token}</h3>
+        <h3>認証後</h3>
+        <h3>challengeTime：{challengeTime}</h3>
+        <h3>score：{score}</h3>
+        <GoogleReCaptcha onVerify={token => setToken(token)} />
       </GoogleReCaptchaProvider>
     </div>
   );
