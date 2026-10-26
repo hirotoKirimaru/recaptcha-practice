@@ -7,9 +7,9 @@ import {
 } from "react-google-recaptcha-v3";
 
 export default function App() {
-  const [token, setToken] = useState();
-  const [score, setScore] = useState();
-  const [challengeTime, setChallengeTime] = useState();
+  const [token, setToken] = useState<string>();
+  const [score, setScore] = useState<number>();
+  const [challengeTime, setChallengeTime] = useState<string>();
 
   function serverAuth() {
     console.log(token);

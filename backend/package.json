@@ -11,8 +11,8 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@google-cloud/functions-framework": "^1.6.0",
-    "npm-watch": "^0.6.0"
+    "@google-cloud/functions-framework": "^5.0.5",
+    "npm-watch": "^0.13.0"
   },
   "watch": {
     "start": "*.js"
